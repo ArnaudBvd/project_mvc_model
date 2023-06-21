@@ -35,6 +35,10 @@ class StarshipController {
             if(strlen($_POST['name']) > 250){
                 $errors['name'] = 'Le nom est trop long (250 caractères)';
             }
+
+            if(!is_numeric($_POST["taille"])){
+                $errors["taille"] = 'Veuillez saisir un nombre';
+            }
             
             if (strlen($_POST['picture']) > 250) {
                 $errors['picture'] = 'Veuillez entrer un lien plus court';

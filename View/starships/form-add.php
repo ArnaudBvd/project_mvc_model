@@ -29,7 +29,13 @@ include('View/parts/header.php');
 
         <div class="col-md-12 mb-3">
             <label for="taille" class="form-label text-light">Taille :</label>
-            <input type="number" name="taille" id="taille" class="form-control">
+            <input type="number" step="0.01" name="taille" id="taille" class="form-control
+            <?php  if(array_key_exists("taille", $errors)){echo('is-invalid');} ?>"
+                   value="<?php if(array_key_exists("taille", $_POST)){echo($_POST["taille"]);};?>">
+
+            <div id="validateNom" class="invalid-feedback">
+                <?php if(array_key_exists("taille", $errors)){echo($errors["taille"]);}?>
+            </div>">
         </div>
 
         <div class="col-md-12 mb-3">
