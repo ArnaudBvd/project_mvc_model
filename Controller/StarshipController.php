@@ -92,4 +92,16 @@ class StarshipController
             require 'View/starships/form-edit.php';
         }
     }
+
+    public function delete($id)
+    {
+        $starship = $this->sm->getOne($id);
+
+        if (is_null($starship)) {
+            header('Location: index.php?controller=default&action=not-found&scope=starship');
+        } else {
+            $this->sm->delete($starship->getId());
+            header("Location: index.php?controller=starship&action=list");
+        }
+    }
 }

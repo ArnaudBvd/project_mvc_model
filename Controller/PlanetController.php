@@ -1,6 +1,7 @@
 <?php
 
-class PlanetController {
+class PlanetController
+{
 
     private $pm;
 
@@ -12,17 +13,20 @@ class PlanetController {
         "Oecuménopole"
     ];
 
-    public function __construct() {
-       $this->pm = new PlanetManager();
+    public function __construct()
+    {
+        $this->pm = new PlanetManager();
     }
 
-    public function displayAll() {
+    public function displayAll()
+    {
         $planets = $this->pm->getAll();
 
         require 'View/planets/list.php';
     }
 
-    public function displayOne($id) {
+    public function displayOne($id)
+    {
         $planet = $this->pm->getOne($id);
 
         if (is_null($planet)) {
@@ -32,7 +36,8 @@ class PlanetController {
         require 'View/planets/detail.php';
     }
 
-    public function ajout() {
+    public function ajout()
+    {
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $errors = $this->checkForm();
@@ -46,15 +51,16 @@ class PlanetController {
         require 'View/planets/form-add.php';
     }
 
-    private function checkForm() {
+    private function checkForm()
+    {
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             // Vérifier le formulaire
-            if(empty($_POST['name'])){
+            if (empty($_POST['name'])) {
                 $errors['name'] = 'Veuillez saisir le nom de la planète';
             }
 
-            if(strlen($_POST['name']) > 250){
+            if (strlen($_POST['name']) > 250) {
                 $errors['name'] = 'Le nom est trop long (250 caractères)';
             }
 
@@ -69,11 +75,12 @@ class PlanetController {
             return $errors;
         }
     }
-    public function update($id){
+    public function update($id)
+    {
         $errors = [];
         $planet = $this->pm->getOne($id);
 
-        if(is_null($planet)){
+        if (is_null($planet)) {
             header('Location: index.php?controller=default&action=not-found&scope=planet');
         } else {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -84,7 +91,7 @@ class PlanetController {
                 $planet->setTerrain($_POST['terrain']);
                 $planet->setPicture($_POST['picture']);
 
-                if(count($errors) == 0) {
+                if (count($errors) == 0) {
                     // Mettre à jour la BDD
                     $this->pm->update($planet);
                     // Rediriger l'utilisateur
@@ -94,5 +101,16 @@ class PlanetController {
             require 'View/planets/form-edit.php';
         }
     }
-  
+
+    public function delete($id)
+    {
+        $planet = $this->pm->getOne($id);
+
+        if (is_null($planet)) {
+            header('Location: index.php?controller=default&action=not-found&scope=planet');
+        } else {
+            $this->pm->delete($planet->getId());
+            header("Location: index.php?controller=planet&action=list");
+        }
+    }
 }

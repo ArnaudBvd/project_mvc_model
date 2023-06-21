@@ -52,6 +52,10 @@
         if ($_GET['action'] == 'update' && array_key_exists('id', $_GET)) {
             $controller->update($_GET['id']);
         }
+
+        if ($_GET['action'] == 'delete' && array_key_exists('id', $_GET)) {
+            $controller->delete($_GET['id']);
+        }
     }
 
 
@@ -72,5 +76,9 @@
 
         if ($_GET['action'] == 'update' && array_key_exists('id', $_GET)) {
             $controller->update($_GET['id']);
+        }
+
+        if ($_GET['action'] == 'delete' && array_key_exists('id', $_GET)) {
+            $controller->delete($_GET['id']);
         }
     }

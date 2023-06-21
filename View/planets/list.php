@@ -43,7 +43,7 @@ include('View/parts/header.php');
                     </td>
                     <td>
                         <div class="d-flex justify-content-center">
-                        <a href="">
+                        <a href="index.php?controller=planet&action=delete&id=<?php echo($planet->getId())?>">
                             <img src="public/img/dmauldelete.png" alt="logo de suppression" width="60" height="60">
                         </a>
                         </div>

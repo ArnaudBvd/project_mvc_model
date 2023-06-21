@@ -76,4 +76,10 @@
 
             $query->execute();
         }
+
+        public function delete($id) {
+            $querry = $this->bdd->prepare('DELETE FROM starship WHERE id = :id');
+            $querry->bindParam('id', $id);
+            $querry->execute();
+        }
     }
