@@ -18,7 +18,7 @@ class StarshipController {
         $starship = $this->sm->getOne($id);
 
         if (is_null($starship)) {
-            header('Location: index.php?controller=default&action=not-found');
+            header('Location: index.php?controller=default&action=not-found&scope=starship');
         }
 
         require 'View/starships/detail.php';

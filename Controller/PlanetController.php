@@ -26,7 +26,7 @@ class PlanetController {
         $planet = $this->pm->getOne($id);
 
         if (is_null($planet)) {
-            header('Location: index.php?controller=default&action=not-found');
+            header('Location: index.php?controller=default&action=not-found&scope=planet');
         }
 
         require 'View/planets/detail.php';

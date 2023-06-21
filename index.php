@@ -42,7 +42,7 @@
         }
 
         if($_GET['action'] == 'detail' && array_key_exists('id', $_GET)){            
-            $controller = $controller->displayOne($_GET['id']);
+            $controller->displayOne($_GET['id']);
         }
 
         if ($_GET['action'] == 'ajout') {           
