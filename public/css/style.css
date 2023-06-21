@@ -1,0 +1,55 @@
+header nav {
+    background-color: #212121;
+    border-bottom: 2px solid #fee347;
+}
+
+
+body {
+    background-image: url(../../public/img/fondetoile.jpg);
+}
+
+#return-btn a{
+   color: #fee347;
+}
+
+table {
+    border: 10px solid;
+}
+
+button {
+    background-color: #fee347;
+    color: #212121;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 20px;
+    font-weight: bolder;
+    transition: all 0.5s ease;
+}
+
+button:hover {
+    background-color: #212121;
+    color: #fee347;
+    border: 1px solid #fee347;
+}
+
+#btn-validate {
+    background-color: #fee347;
+    color: #212121;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 20px;
+    font-weight: bolder;
+    transition: all 0.5s ease;
+}
+
+#btn-validate:hover {
+    background-color: #212121;
+    color: #fee347;
+    border: 1px solid #fee347;
+}
+
+footer {
+    background-color: #212121;
+    border-top: 2px solid #fee347;
+}
+
