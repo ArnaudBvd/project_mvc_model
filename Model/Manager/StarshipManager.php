@@ -52,6 +52,28 @@
             $starship->setId($this->bdd->lastInsertId());
 
             return $starship;
+        }
 
+        public function update(Starship $starship) {
+            $name = $starship->getName();
+            $picture = $starship->getPicture();
+            $taille = $starship->getTaille();
+            $fonction = $starship->getFonction();
+            $id = $starship->getId();
+
+            $query = $this->bdd->prepare("UPDATE starship SET
+            name = :name, 
+            picture = :picture,
+            taille = :taille,
+            fonction = :fonction
+            WHERE id = :id");
+
+            $query->bindParam("name", $name);
+            $query->bindParam('picture', $picture);
+            $query->bindParam("taille", $taille);
+            $query->bindParam("fonction", $fonction);
+            $query->bindParam("id", $id);
+
+            $query->execute();
         }
     }

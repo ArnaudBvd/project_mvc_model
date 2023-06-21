@@ -37,14 +37,14 @@ include('View/parts/header.php');
                     <td>
                         <div class="d-flex justify-content-center">
                             <a href="index.php?controller=planet&action=update&id=<?php echo($planet->getId())?>">
-                                <img src="public/img/edit.png" alt="logo de modification" width="50" height="50">
+                                <img src="public/img/yodaedit.png" alt="logo de modification" width="60" height="60">
                             </a>
                         </div>
                     </td>
                     <td>
                         <div class="d-flex justify-content-center">
                         <a href="">
-                            <img src="public/img/delete.png" alt="logo de suppression" width="50" height="50">
+                            <img src="public/img/dmauldelete.png" alt="logo de suppression" width="60" height="60">
                         </a>
                         </div>
                     </td>

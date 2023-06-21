@@ -21,6 +21,8 @@ include('View/parts/header.php');
                 <th scope="col">Fonction</th>
                 <th scope="col">Picture</th>
                 <th scope="col">Détail</th>
+                <th scope="col" class="text-center">Modifier</th>
+                <th scope="col" class="text-center">Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +34,20 @@ include('View/parts/header.php');
                     <td><?php echo ($starship->getFonction()) ?></td>
                     <td><img src="<?php echo ($starship->getPicture()) ?>" alt="un vaisseau spatiale" width="150" height="100" class="rounded"></td>
                     <td><a href="index.php?controller=starship&action=detail&id=<?php echo($starship->getId()) ?>"><img src="public/img/detailstarship.jpg" alt="image de vaisseau" width="100" height="100" class="rounded"></a></td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a href="index.php?controller=starship&action=update&id=<?php echo($starship->getId())?>">
+                                <img src="public/img/yodaedit.png" alt="logo de modification" width="60" height="60">
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                        <a href="">
+                            <img src="public/img/dmauldelete.png" alt="logo de suppression" width="60" height="60">
+                        </a>
+                        </div>
+                    </td>
                 <?php endforeach; ?>
                 </tr>
         </tbody>
