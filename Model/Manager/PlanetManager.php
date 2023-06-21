@@ -52,5 +52,28 @@
             return $planet;
 
         }
+
+        public function update(Planet $planet) {
+            $name = $planet->getName();
+            $description = $planet->getDescription();
+            $terrain = $planet->getTerrain();
+            $picture = $planet->getPicture();
+            $id = $planet->getId();
+
+            $query = $this->bdd->prepare("UPDATE planet SET
+            name = :name, 
+            description = :description,
+            terrain = :terrain,
+            picture = :picture
+            WHERE id = :id");
+
+            $query->bindParam("name", $name);
+            $query->bindParam('description', $description);
+            $query->bindParam("terrain", $terrain);
+            $query->bindParam("picture", $picture);
+            $query->bindParam("id", $id);
+
+            $query->execute();
+
+        }
     }
-?>

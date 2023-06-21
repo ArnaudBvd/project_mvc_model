@@ -21,6 +21,8 @@ include('View/parts/header.php');
                 <th scope="col">Terrain</th>
                 <th scope="col" class="text-center">Picture</th>
                 <th scope="col" class="text-center">Détail</th>
+                <th scope="col" class="text-center">Modifier</th>
+                <th scope="col" class="text-center">Supprimer</th>                
             </tr>
         </thead>
         <tbody>
@@ -31,7 +33,21 @@ include('View/parts/header.php');
                     <td><?php echo ($planet->getDescription()) ?></td>
                     <td><?php echo ($planet->getTerrain()) ?></td>
                     <td><img src="<?php echo ($planet->getPicture()) ?>" alt="une planète" width="100" height="100" class="rounded"></td>
-                    <td><a href="index.php?controller=planet&action=detail&id=<?php echo($planet->getId()) ?>"><img src="public/img/detailplanet.jpg" alt="image de planète" width="100" height="100" class="rounded"></a></td>
+                    <td><a href="index.php?controller=planet&action=detail&id=<?php echo($planet->getId())?>"><img src="public/img/detailplanet.jpg" alt="image de planète" width="100" height="100" class="rounded"></a></td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a href="index.php?controller=planet&action=update&id=<?php echo($planet->getId())?>">
+                                <img src="public/img/edit.png" alt="logo de modification" width="50" height="50">
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                        <a href="">
+                            <img src="public/img/delete.png" alt="logo de suppression" width="50" height="50">
+                        </a>
+                        </div>
+                    </td>
                 <?php endforeach; ?>
                 </tr>
         </tbody>

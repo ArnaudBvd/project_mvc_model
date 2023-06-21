@@ -48,6 +48,10 @@
         if ($_GET['action'] == 'ajout') {           
             $controller->ajout();
         }
+
+        if ($_GET['action'] == 'update' && array_key_exists('id', $_GET)) {
+            $controller->update($_GET['id']);
+        }
     }
 
 

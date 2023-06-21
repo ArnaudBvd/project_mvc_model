@@ -19,7 +19,7 @@ class PlanetController {
     public function displayAll() {
         $planets = $this->pm->getAll();
 
-    require 'View/planets/list.php';
+        require 'View/planets/list.php';
     }
 
     public function displayOne($id) {
@@ -33,6 +33,20 @@ class PlanetController {
     }
 
     public function ajout() {
+        $errors = [];
+        if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+            $errors = $this->checkForm();
+            // S'il est valide, on enregistre les données puis on redirige l'utilisateur
+            if (count($errors) == 0) {
+                $planet = new Planet(null, $_POST['name'], $_POST['description'], $_POST['terrain'], $_POST['picture']);
+                $this->pm->add($planet);
+                header('Location: index.php?controller=planet&action=list');
+            }
+        }
+        require 'View/planets/form-add.php';
+    }
+
+    private function checkForm() {
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             // Vérifier le formulaire
@@ -52,13 +66,33 @@ class PlanetController {
                 $errors['picture'] = 'Veuillez entrer un lien plus court';
             }
 
-            // S'il est valide, on enregistre les données puis on redirige l'utilisateur
-            if (count($errors) == 0) {
-                $planet = new Planet(null, $_POST['name'], $_POST['description'], $_POST['terrain'], $_POST['picture']);
-                $this->pm->add($planet);
-                header('Location: index.php?controller=planet&action=list');
-            }
+            return $errors;
         }
-        require 'View/planets/form-add.php';
     }
+    public function update($id){
+        $errors = [];
+        $planet = $this->pm->getOne($id);
+
+        if(is_null($planet)){
+            header('Location: index.php?controller=default&action=not-found&scope=planet');
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $errors = $this->checkForm();
+
+                $planet->setName($_POST['name']);
+                $planet->setDescription($_POST['description']);
+                $planet->setTerrain($_POST['terrain']);
+                $planet->setPicture($_POST['picture']);
+
+                if(count($errors) == 0) {
+                    // Mettre à jour la BDD
+                    $this->pm->update($planet);
+                    // Rediriger l'utilisateur
+                    header("Location: index.php?controller=planet&action=list");
+                }
+            }
+            require 'View/planets/form-edit.php';
+        }
+    }
+  
 }
