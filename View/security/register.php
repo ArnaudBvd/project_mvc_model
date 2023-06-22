@@ -13,7 +13,11 @@
 <body>
 
     <div class="container">
-        <h1 class="text-light text-center my-4">Créer un compte</h1>
+        <h1 class="text-center text-light my-5">Créer un compte</h1>
+
+        <div class="my-4 d-flex justify-content-center">
+            <img src="public/img/register.jpg" alt="salle de contrôle" class="rounded" width="1180" height="445">
+        </div>
 
         <form method="post">
 
