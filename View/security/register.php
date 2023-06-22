@@ -15,6 +15,10 @@
     <div class="container">
         <h1 class="text-center text-light my-5">Créer un compte</h1>
 
+        <div id="return-btn">
+            <a href="index.php?controller=security&action=login" class="text-decoration-none">Retour</a>
+        </div>
+
         <div class="my-4 d-flex justify-content-center">
             <img src="public/img/register.jpg" alt="salle de contrôle" class="rounded" width="1180" height="445">
         </div>

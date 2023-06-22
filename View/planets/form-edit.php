@@ -4,6 +4,7 @@ include('View/parts/header.php');
 
 <div class="container mb-5">
     <h1 class="text-center text-light mb-4">Modifier la planète <?php echo($planet->getName()) ?></h1>
+    
     <div id="return-btn">
         <a href="index.php?controller=planet&action=list" class="text-decoration-none">Retour</a>
     </div>
