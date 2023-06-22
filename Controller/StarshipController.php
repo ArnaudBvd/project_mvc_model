@@ -1,12 +1,14 @@
 <?php
 
-class StarshipController
+class StarshipController extends SecurityController
 {
 
     private $sm;
 
     public function __construct()
     {
+        parent::__construct();
+        parent::isLoggedIn();
         $this->sm = new StarshipManager();
     }
 

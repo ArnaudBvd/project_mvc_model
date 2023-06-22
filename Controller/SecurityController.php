@@ -1,16 +1,30 @@
 <?php
 
-class SecurityController {
+class SecurityController
+{
     private $userManager;
+    protected $currentUser;
 
     public function __construct()
     {
         $this->userManager = new UserManager();
+        $this->currentUser = null;
+        if (array_key_exists('user', $_SESSION)) {
+            $this->currentUser = unserialize($_SESSION['user']);
+        }
     }
 
-    public function register() {
+    public function isLoggedIn()
+    {
+        if (!$this->currentUser) {
+            header('Location: index.php?controller=security&action=login');
+        }
+    }
+
+    public function register()
+    {
         $errors = [];
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Username non vide
             if (empty($_POST['username'])) {
                 $errors['username'] = "Veuillez saisir un nom d'utilisateur";
@@ -48,11 +62,41 @@ class SecurityController {
 
                 $this->userManager->add($user);
 
-            // On renvoie l'utlisateur vers le Login
+                // On renvoie l'utlisateur vers le Login
                 header('Location: index.php?controller=security&action=login');
             }
         }
 
         require 'View/security/register.php';
+    }
+
+
+    public function login()
+    {
+        $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (empty($_POST['username'])) {
+                $errors['username'] = "Veuillez saisir un nom d'utilisateur";
+            }
+
+            if (empty($_POST['password'])) {
+                $errors['password'] = "Veuillez saisir un mot de passe";
+            }
+
+            if (count($errors) == 0) {
+                $user = $this->userManager->getByUsername($_POST['username']);
+
+                if (is_null($user) || !password_verify($_POST['password'], $user->getPassword())) {
+                    $errors['password'] = "Identifiant ou mot de passe incorrect";
+                } else {
+                    $this->currentUser = $user;
+                    $_SESSION['user'] = serialize($user);
+                    header('Location: index.php?controller=default&action=home');
+                }
+            }
+        }
+
+        require 'View/security/login.php';
     }
 }

@@ -1,16 +1,21 @@
 <?php
-
+session_start();
 require 'Model/Manager/DBManager.php';
-require 'Model/Class/Planet.php';
-require 'Model/Class/Starship.php';
-require  'Model/Manager/PlanetManager.php';
-require  'Model/Manager/StarshipManager.php';
-require 'Controller/DefaultController.php';
-require 'Controller/PlanetController.php';
-require 'Controller/StarshipController.php';
+
 require 'Model/Class/User.php';
 require 'Model/Manager/UserManager.php';
 require 'Controller/SecurityController.php';
+
+require 'Model/Class/Planet.php';
+require 'Model/Class/Starship.php';
+
+require  'Model/Manager/PlanetManager.php';
+require  'Model/Manager/StarshipManager.php';
+
+require 'Controller/DefaultController.php';
+require 'Controller/PlanetController.php';
+require 'Controller/StarshipController.php';
+
 
 // LES DIFFERENTES ROUTES DU ROUTER
 
@@ -90,5 +95,9 @@ if ($_GET['controller'] == 'security') {
     $controller = new SecurityController();
     if ($_GET['action'] == 'register') {
         $controller->register();
+    }
+
+    if ($_GET['action'] == 'login') {
+        $controller->login();
     }
 }

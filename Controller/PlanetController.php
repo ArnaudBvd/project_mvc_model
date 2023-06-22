@@ -1,6 +1,6 @@
 <?php
 
-class PlanetController
+class PlanetController extends SecurityController
 {
 
     private $pm;
@@ -15,6 +15,8 @@ class PlanetController
 
     public function __construct()
     {
+        parent::__construct();
+        parent::isLoggedIn();
         $this->pm = new PlanetManager();
     }
 
