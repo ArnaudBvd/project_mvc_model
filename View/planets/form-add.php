@@ -16,7 +16,9 @@ include('View/parts/header.php');
 
         <div class="col-md-12 mb-3">
             <label for="name" class="form-label text-light">Nom :</label>
-            <input type="text" name="name" id="name" class="form-control
+            <input type="text"
+            value="<?php if(array_key_exists('name', $_POST)){echo($_POST['name']);} ?>"
+             name="name" id="name" class="form-control
             <?php if (array_key_exists("name", $errors)) {
                 echo ('is-invalid');
             } ?>">
