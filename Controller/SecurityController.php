@@ -18,6 +18,7 @@ class SecurityController
     {
         if (!$this->currentUser) {
             header('Location: index.php?controller=security&action=login');
+            die();
         }
     }
 
@@ -98,5 +99,11 @@ class SecurityController
         }
 
         require 'View/security/login.php';
+    }
+
+    public function logout() {
+        session_destroy();
+        $this->currentUser = null;
+        header('Location: index.php?controller=security&action=login');
     }
 }

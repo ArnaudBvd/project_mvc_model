@@ -16,7 +16,6 @@ class PlanetController extends SecurityController
     public function __construct()
     {
         parent::__construct();
-        parent::isLoggedIn();
         $this->pm = new PlanetManager();
     }
 
@@ -40,6 +39,8 @@ class PlanetController extends SecurityController
 
     public function ajout()
     {
+        parent::isLoggedIn();
+
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $errors = $this->checkForm();
@@ -79,6 +80,8 @@ class PlanetController extends SecurityController
     }
     public function update($id)
     {
+        parent::isLoggedIn();
+
         $errors = [];
         $planet = $this->pm->getOne($id);
 
@@ -106,6 +109,8 @@ class PlanetController extends SecurityController
 
     public function delete($id)
     {
+        parent::isLoggedIn();
+
         $planet = $this->pm->getOne($id);
 
         if (is_null($planet)) {

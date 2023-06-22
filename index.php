@@ -100,4 +100,8 @@ if ($_GET['controller'] == 'security') {
     if ($_GET['action'] == 'login') {
         $controller->login();
     }
+
+    if ($_GET['action'] == 'logout') {
+        $controller->logout();
+    }
 }

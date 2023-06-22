@@ -8,7 +8,6 @@ class StarshipController extends SecurityController
     public function __construct()
     {
         parent::__construct();
-        parent::isLoggedIn();
         $this->sm = new StarshipManager();
     }
 
@@ -32,6 +31,7 @@ class StarshipController extends SecurityController
 
     public function ajout()
     {
+        parent::isLoggedIn();
         $errors = [];
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             $errors = $this->checkForm();
@@ -69,11 +69,13 @@ class StarshipController extends SecurityController
         }
     }
 
-    public function update($id){
+    public function update($id)
+    {
+        parent::isLoggedIn();
         $errors = [];
         $starship = $this->sm->getOne($id);
 
-        if(is_null($starship)){
+        if (is_null($starship)) {
             header('Location: index.php?controller=default&action=not-found&scope=starship');
         } else {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -84,7 +86,7 @@ class StarshipController extends SecurityController
                 $starship->setTaille($_POST['taille']);
                 $starship->setFonction($_POST['fonction']);
 
-                if(count($errors) == 0) {
+                if (count($errors) == 0) {
                     // Mettre à jour la BDD
                     $this->sm->update($starship);
                     // Rediriger l'utilisateur
@@ -97,6 +99,7 @@ class StarshipController extends SecurityController
 
     public function delete($id)
     {
+        parent::isLoggedIn();
         $starship = $this->sm->getOne($id);
 
         if (is_null($starship)) {
