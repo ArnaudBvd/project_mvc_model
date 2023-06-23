@@ -23,3 +23,4 @@ include 'View/parts/header.php';
 
 <?php
 include ('View/parts/footer.php');
+?>
