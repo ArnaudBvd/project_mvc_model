@@ -12,7 +12,7 @@ include('View/parts/header.php');
     <div class="row">
         <div class="col-3"></div>
         <!-- Ce lien renvoie vers notre router avec le controller = planet et
-    le paramètre action = list -->
+        le paramètre action = list -->
         <div class="col-3  d-flex justify-content-center my-5">
             <a href="index.php?controller=planet&action=list" class="text-decoration-none text-center">
                 <button>Voir les planètes</button>
@@ -21,7 +21,7 @@ include('View/parts/header.php');
         <br>
 
         <!-- Ce lien renvoie vers notre router avec le controller = starship et
-    le paramètre action = list -->
+        le paramètre action = list -->
         <div class="col-3  d-flex justify-content-center my-5">
             <a href="index.php?controller=starship&action=list" class="text-decoration-none text-center">
                 <button>Voir les vaisseaux</button>

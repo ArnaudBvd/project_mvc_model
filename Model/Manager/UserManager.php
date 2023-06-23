@@ -20,7 +20,7 @@ class UserManager extends DBManager
 
     public function add(User $user)
     {
-        $username = $user->getUserame();
+        $username = $user->getUsername();
         $nom = $user->getNom();
         $prenom = $user->getPrenom();
         $password = $user->getPassword();
