@@ -25,11 +25,11 @@ class User {
         $this->id = $id;
     }
 
-    public function getUserame(){
+    public function getUsername(){
         return $this->username;
     }
 
-    public function setUserame($username){
+    public function setUsername($username){
         $this->username = $username;
     }
 

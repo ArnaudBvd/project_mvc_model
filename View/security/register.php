@@ -13,7 +13,14 @@
 <body>
 
     <div class="container">
-        <h1 class="text-center text-light my-5">Créer un compte</h1>
+        <h1 class="text-center text-light my-4">Créer un compte</h1>
+
+        <div class="container d-flex flex-column justify-content-center">
+
+            <a class="mx-auto d-block" href="index.php?controller=default&action=home">
+                <button class="mt-5">Accueil</button>
+            </a>
+        </div>
 
         <div id="return-btn">
             <a href="index.php?controller=security&action=login" class="text-decoration-none">Retour</a>
@@ -27,42 +34,48 @@
 
             <div class="col-md-12">
                 <label for="username" class="text-light">Username :</label>
-                <input type="text" id="username"
-                value="<?php if(array_key_exists("username", $_POST)){echo($_POST['username']);} ?>"
-                 name="username" class="form-control
-                <?php if(array_key_exists('username', $errors)){echo('is-invalid');}?>">
+                <input type="text" id="username" value="<?php if (array_key_exists("username", $_POST)) {
+                                                            echo ($_POST['username']);
+                                                        } ?>" name="username" class="form-control
+                <?php if (array_key_exists('username', $errors)) {
+                    echo ('is-invalid');
+                } ?>">
 
                 <div class="invalid-feedback">
-                <?php if (array_key_exists("username", $errors)) {
-                    echo ($errors['username']);
-                } ?>
+                    <?php if (array_key_exists("username", $errors)) {
+                        echo ($errors['username']);
+                    } ?>
                 </div>
             </div>
 
             <div class="col-md-12">
                 <label for="nom" class="text-light">Nom :</label>
-                <input type="text" id="nom"
-                value="<?php if(array_key_exists("nom", $_POST)){echo($_POST['nom']);} ?>"
-                 name="nom" class="form-control
-                 <?php if(array_key_exists('nom', $errors)){echo('is-invalid');}?>">
+                <input type="text" id="nom" value="<?php if (array_key_exists("nom", $_POST)) {
+                                                        echo ($_POST['nom']);
+                                                    } ?>" name="nom" class="form-control
+                 <?php if (array_key_exists('nom', $errors)) {
+                        echo ('is-invalid');
+                    } ?>">
 
                 <div class="invalid-feedback">
                     <?php if (array_key_exists("nom", $errors)) {
-                    echo ($errors['nom']);
+                        echo ($errors['nom']);
                     } ?>
                 </div>
             </div>
 
             <div class="col-md-12">
                 <label for="prenom" class="text-light">Prénom :</label>
-                <input type="text" id="nom"
-                value="<?php if(array_key_exists("nom", $_POST)){echo($_POST['prenom']);} ?>"
-                 name="prenom" class="form-control
-                 <?php if(array_key_exists('prenom', $errors)){echo('is-invalid');}?>">
+                <input type="text" id="nom" value="<?php if (array_key_exists("nom", $_POST)) {
+                                                        echo ($_POST['prenom']);
+                                                    } ?>" name="prenom" class="form-control
+                 <?php if (array_key_exists('prenom', $errors)) {
+                        echo ('is-invalid');
+                    } ?>">
 
                 <div class="invalid-feedback">
                     <?php if (array_key_exists("prenom", $errors)) {
-                    echo ($errors['prenom']);
+                        echo ($errors['prenom']);
                     } ?>
                 </div>
             </div>
@@ -70,11 +83,13 @@
             <div class="col-md-12 mt-3">
                 <label for="password" class="text-light">Mot de passe :</label>
                 <input type="password" id="password" name="password" class="form-control
-                <?php if(array_key_exists('password', $errors)){echo('is-invalid');}?>">
+                <?php if (array_key_exists('password', $errors)) {
+                    echo ('is-invalid');
+                } ?>">
 
                 <div class="invalid-feedback">
                     <?php if (array_key_exists("password", $errors)) {
-                    echo ($errors['password']);
+                        echo ($errors['password']);
                     } ?>
                 </div>
             </div>
@@ -82,24 +97,27 @@
             <div class="col-md-12">
                 <label for="password2" class="text-light"> Confirmer le mot de passe :</label>
                 <input type="password" id="password2" name="password2" class="form-control
-                <?php if(array_key_exists('password2', $errors)){echo('is-invalid');}?>">
+                <?php if (array_key_exists('password2', $errors)) {
+                    echo ('is-invalid');
+                } ?>">
 
                 <div class="invalid-feedback">
                     <?php if (array_key_exists("password2", $errors)) {
-                    echo ($errors['password2']);
+                        echo ($errors['password2']);
                     } ?>
-                </div">
-            </div>
+                    </div">
+                </div>
 
-            <div class="d-flex justify-content-center mt-4">
-                <input type="submit" value="VALIDER" id="btn-validate">
-            </div>
+                <div class="d-flex justify-content-center mt-4">
+                    <input type="submit" value="VALIDER" id="btn-validate">
+                </div>
 
         </form>
         <?php
-include 'View/parts/footer.php';
-?>
+        include 'View/parts/footer.php';
+        ?>
     </div>
 
 </body>
+
 </html>

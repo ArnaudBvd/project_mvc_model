@@ -13,19 +13,18 @@
 <body>
 
     <div class="container">
-        <h1 class="text-center text-light my-5">Se connecter</h1>
+        <h1 class="text-center text-light my-4">Se connecter</h1>
 
         <div class="container d-flex flex-column justify-content-center">
-            <!-- <div> -->
+            
                 <a class="mx-auto d-block" href="index.php?controller=default&action=home">
                     <button class="mt-5">Accueil</button>
                 </a>
-            <!-- </div> -->
-            <!-- <div> -->
+           
                 <a class="mx-auto d-block" href="index.php?controller=security&action=register">
                     <button class="mt-5">Créer un compte</button>
                 </a>
-            <!-- </div> -->
+            
         </div>
 
 

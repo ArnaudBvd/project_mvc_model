@@ -6,7 +6,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav col-10">
                     <li class="nav-item">
                         <a class="nav-link active text-light" aria-current="page" href="index.php">Accueil</a>
                     </li>
@@ -16,9 +16,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="index.php?controller=starship&action=list">Vaisseaux</a>
                     </li>
-                    
+
                     <!-- Si l'utilisateur est connecté l'onglet 'Déconnexion' apparait sinon c'est l'onglet 'Connexion'  -->
-                    <li class="nav-item">
+                    <li class="nav-item ms-5">
                         <?php if ($this->connexion_status() == false) {
                             echo '<a class=" btn btn-success nav-link fw-semibold text-light p-2" href="index.php?controller=security&action=login">Connexion</a>';
                         } else if ($this->connexion_status() == true) {
@@ -26,8 +26,17 @@
                         }
                         ?>
                     </li>
+                    
                 </ul>
+                
+                <div class=" d-flex justify-content-center col-2">
+                        <?php
+                        if ($this->currentUser) {
+                            echo ('<a class="nav-link text-center text-warning float-end"> Bienvenue ' . $this->currentUser->getUsername(). '</a>');
+                        }
+                        ?>
+                </div>
             </div>
-        </div>
+        </div>de
     </nav>
 </header>
