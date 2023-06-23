@@ -34,29 +34,26 @@ include('View/parts/header.php');
             <textarea name="description" class="form-control" id="description"></textarea>
         </div>
 
-        <div class="col-md-12 mb-3">
-            <label for="terrain" class="form-label text-light">Terrain :</label>
-            <select name="terrain" id="terrain" class="form-select
-            <?php if (array_key_exists("terrain", $errors)) {
-                echo ('is-invalid');
-            } ?>">
-                <option value=" ">Pas d'info</option>
-
-                <?php foreach (PlanetController::$allowedTerrain as $terrain) {
-                    $selected = '';
-                    if(array_key_exists("terrain", $_POST) && $_POST["terrain"] == $terrain){
-                        $selected = 'selected';
-                    }
-                    echo('<option' .$selected.' value="' .$terrain. '">'.$terrain.'</option>');
-                    }?>
-                    
+        <div class="col-md-12">
+            <label for="validationCustom04" class="form-label text-light">Terrain</label>
+            <select class="form-select
+                 <?php if(array_key_exists("terrain", $errors)){echo('is-invalid');}?>" name="terrain" id="validationCustom04">
+                <option  value="">Pas d'infos</option>
+               <?php
+               foreach (PlanetController::$allowedTerrain as $terrain){
+                   $selected = '';
+                   if(array_key_exists("terrain",$_POST) && $_POST["terrain"] == $terrain){
+                       $selected = 'selected';
+                   }
+                   echo('<option '.$selected.' value="'.$terrain.'">'.$terrain.'</option>');
+               }
+               ?>
             </select>
             <div class="invalid-feedback">
-                <?php if (array_key_exists("terrain", $errors)) {
-                    echo ($errors['terrain']);
-                } ?>
+                <?php if(array_key_exists("terrain", $errors)){echo($errors["terrain"]);}?>
             </div>
         </div>
+
 
         <div class="col-md-12 mb-3">
             <label for="picture" class="form-label text-light">Photo :</label>
