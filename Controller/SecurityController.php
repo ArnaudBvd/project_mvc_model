@@ -14,6 +14,17 @@ class SecurityController
         }
     }
 
+    // Fonction qui permet de vérifier si un utilisateur est connecté 
+    // Utilisée notamment pour les onglets 'connexion' et 'déconnexion' de la navbar
+    public static function connexion_status()
+    {
+        if (array_key_exists("user", $_SESSION)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function isLoggedIn()
     {
         if (!$this->currentUser) {
