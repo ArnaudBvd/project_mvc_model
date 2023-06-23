@@ -16,7 +16,9 @@ include('View/parts/header.php');
 
         <div class="col-md-12 mb-3">
             <label for="name" class="form-label text-light">Nom :</label>
-            <input type="text" name="name" id="name" class="form-control
+            <input type="text" name="name"
+            value="<?php if(array_key_exists('name', $_POST)){echo($_POST['name']);} ?>"
+             id="name" class="form-control
             <?php if (array_key_exists("name", $errors)) {
                 echo ('is-invalid');
             } ?>">
@@ -29,7 +31,9 @@ include('View/parts/header.php');
 
         <div class="col-md-12 mb-3">
             <label for="taille" class="form-label text-light">Taille :</label>
-            <input type="number" step="0.01" name="taille" id="taille" class="form-control
+            <input type="number" step="0.01"
+            value="<?php if(array_key_exists('taille', $_POST)){echo($_POST['taille']);} ?>"
+             name="taille" id="taille" class="form-control
             <?php  if(array_key_exists("taille", $errors)){echo('is-invalid');} ?>"
                    value="<?php if(array_key_exists("taille", $_POST)){echo($_POST["taille"]);};?>">
 
