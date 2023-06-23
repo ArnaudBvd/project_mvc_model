@@ -1,15 +1,22 @@
 <?php
 
+// Class en charge de la sécurité de notre application
 class SecurityController
 {
+    // Manager qui permettra de requêter nos nos données utilisateurs
     private $userManager;
+    // Partagé avec les classes enfant, c'est l'utilisateur connecté
     protected $currentUser;
 
     public function __construct()
     {
+        // On récupère notre user manager
         $this->userManager = new UserManager();
         $this->currentUser = null;
+        // S'il est dans la session, on le met dans notre attribut 'currentuser'
         if (array_key_exists('user', $_SESSION)) {
+            // Il est stocké dans la session sous forme de texte
+            // On le transforme en objet
             $this->currentUser = unserialize($_SESSION['user']);
         }
     }
@@ -25,7 +32,10 @@ class SecurityController
         }
     }
 
-    public function isLoggedIn()
+    // Fonction qui vérifie que l'on a un attribut 'currentuser'
+    // Si ce n'est pas le cas, alors il n'y a pas d'utilisateur connecté
+    // Donc on redirige vers la page de login
+    protected function isLoggedIn()
     {
         if (!$this->currentUser) {
             header('Location: index.php?controller=security&action=login');
@@ -33,6 +43,10 @@ class SecurityController
         }
     }
 
+    // Affiche le formulaire d'enregistrement
+    // Vérifie les saisies du formulaire
+    // Enregistre l'utilisateur (Attention : bien penser à hacher le password)
+    // Redirige l'utilisateur vers le login
     public function register()
     {
         $errors = [];
@@ -82,7 +96,11 @@ class SecurityController
         require 'View/security/register.php';
     }
 
-
+    // Fonction qui affiche le formulaire de login
+    // Lors de la soumission elle le vérifie
+    // Connecte l'utilisateur si les identifiants sont bons
+    // Stocke en session l'utilisateur après l'avoir transformé en chaîne de caractère
+    // Met à jour notre attribut currentUser avec l'utilisateur connecté
     public function login()
     {
         $errors = [];
@@ -112,7 +130,11 @@ class SecurityController
         require 'View/security/login.php';
     }
 
-    public function logout() {
+    // Méthode de logout
+    // Elle supprime la session, vide l'attribut de l'utilisateur courant
+    // Redirige vers le login
+    public function logout()
+    {
         session_destroy();
         $this->currentUser = null;
         header('Location: index.php?controller=security&action=login');

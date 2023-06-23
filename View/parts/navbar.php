@@ -16,10 +16,7 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="index.php?controller=starship&action=list">Vaisseaux</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-light" href="index.php?controller=security&action=logout">Se déconnecter</a>
-                    </li>
-
+                    
                     <!-- Si l'utilisateur est connecté l'onglet 'Déconnexion' apparait sinon c'est l'onglet 'Connexion'  -->
                     <li class="nav-item">
                         <?php if ($this->connexion_status() == false) {
