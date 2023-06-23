@@ -113,11 +113,8 @@
                 </div>
 
         </form>
-        <?php
-        include 'View/parts/footer.php';
-        ?>
     </div>
 
-</body>
-
-</html>
+    <?php
+    include 'View/parts/footer.php';
+    ?>
